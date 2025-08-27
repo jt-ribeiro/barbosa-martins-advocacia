@@ -1,0 +1,175 @@
+@import '../../styles/base/variables';
+
+.header {
+  background: $primary-black;
+  color: $white;
+  padding: $spacing-md 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    .logo-image {
+      height: 180px;
+      width: auto;
+      margin-right: $spacing-md;
+      object-fit: contain;
+      
+      @media (max-width: $breakpoint-md) {
+        height: 35px;
+        margin-right: $spacing-sm;
+      }
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+
+      .firm-name {
+        font-family: $font-display;
+        font-size: 1.4rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        
+        @media (max-width: $breakpoint-md) {
+          font-size: 1.2rem;
+        }
+      }
+
+      .firm-description {
+        font-size: 0.8rem;
+        opacity: 0.8;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        
+        @media (max-width: $breakpoint-md) {
+          font-size: 0.7rem;
+        }
+      }
+    }
+  }
+
+  .navigation {
+    display: flex;
+    gap: $spacing-xl;
+    
+    @media (max-width: $breakpoint-lg) {
+      display: none;
+    }
+
+    .nav-link {
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      position: relative;
+      padding: $spacing-sm 0;
+      transition: all 0.3s ease;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: $white;
+        transition: width 0.3s ease;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  .mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: $spacing-sm;
+    
+    @media (max-width: $breakpoint-lg) {
+      display: flex;
+    }
+
+    span {
+      width: 25px;
+      height: 2px;
+      background: $white;
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+  }
+}
+
+// Versão alternativa se quiser apenas a imagem do logo
+.header-minimal {
+  .logo {
+    .logo-text {
+      @media (max-width: $breakpoint-md) {
+        display: none;
+      }
+    }
+  }
+}
+
+// Header com fundo transparente (para hero section)
+.header-transparent {
+  background: transparent;
+  backdrop-filter: none;
+  
+  .nav-link {
+    color: $white;
+    
+    &::after {
+      background: $white;
+    }
+  }
+}
+
+// Header com fundo branco (para outras páginas)
+.header-light {
+  background: $white;
+  color: $primary-black;
+  box-shadow: $shadow-sm;
+  
+  .nav-link {
+    color: $primary-black;
+    
+    &::after {
+      background: $primary-black;
+    }
+  }
+  
+  .mobile-menu-toggle span {
+    background: $primary-black;
+  }
+}
