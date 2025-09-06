@@ -10,6 +10,7 @@
   z-index: 1000;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  border-bottom: 2px solid rgba(245, 245, 245, 0.3); // linha de contraste
 
   .header-content {
     display: flex;
@@ -18,6 +19,7 @@
     height: 60px;
   }
 
+  // LOGO
   .logo {
     display: flex;
     align-items: center;
@@ -30,50 +32,23 @@
     }
 
     .logo-image {
-      height: 180px;
+      height: 150px;
       width: auto;
       margin-right: $spacing-md;
       object-fit: contain;
-      
+
       @media (max-width: $breakpoint-md) {
-        height: 35px;
+        height: 55px;
         margin-right: $spacing-sm;
-      }
-    }
-
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.1;
-
-      .firm-name {
-        font-family: $font-display;
-        font-size: 1.4rem;
-        font-weight: 600;
-        letter-spacing: 0.5px;
-        
-        @media (max-width: $breakpoint-md) {
-          font-size: 1.2rem;
-        }
-      }
-
-      .firm-description {
-        font-size: 0.8rem;
-        opacity: 0.8;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        
-        @media (max-width: $breakpoint-md) {
-          font-size: 0.7rem;
-        }
       }
     }
   }
 
+  // NAVIGATION (desktop)
   .navigation {
     display: flex;
     gap: $spacing-xl;
-    
+
     @media (max-width: $breakpoint-lg) {
       display: none;
     }
@@ -85,6 +60,7 @@
       text-transform: uppercase;
       position: relative;
       padding: $spacing-sm 0;
+      color: $white;
       transition: all 0.3s ease;
 
       &::after {
@@ -98,39 +74,61 @@
         transition: width 0.3s ease;
       }
 
-      &:hover::after {
+      &:hover::after,
+      &.active::after {
         width: 100%;
       }
 
-      &:hover {
-        opacity: 0.8;
+      &.active {
+        font-weight: 600;
       }
     }
   }
 
-  .mobile-menu-toggle {
+  // HAMBURGER WRAPPER
+  .hamburger-wrapper {
     display: none;
-    flex-direction: column;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: $spacing-sm;
-    
     @media (max-width: $breakpoint-lg) {
-      display: flex;
+      display: block;
+    }
+  }
+
+  // MOBILE MENU (slide)
+  .mobile-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 220px;
+    background: $primary-black;
+    border-radius: 0 0 10px 10px;
+    overflow: hidden;
+    max-height: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+
+    &.open {
+      max-height: 500px; // suficiente para mostrar todos os links
+      padding: 0.5rem 0;
     }
 
-    span {
-      width: 25px;
-      height: 2px;
-      background: $white;
-      margin: 3px 0;
-      transition: 0.3s;
+    a {
+      color: $white;
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $primary-dark;
+      }
     }
   }
 }
 
-// Versão alternativa se quiser apenas a imagem do logo
+// Header minimal (só logo imagem)
 .header-minimal {
   .logo {
     .logo-text {
@@ -141,35 +139,36 @@
   }
 }
 
-// Header com fundo transparente (para hero section)
+// Header transparente (hero section)
 .header-transparent {
   background: transparent;
   backdrop-filter: none;
-  
+
   .nav-link {
     color: $white;
-    
+
     &::after {
       background: $white;
     }
   }
 }
 
-// Header com fundo branco (para outras páginas)
+// Header light (outras páginas)
 .header-light {
   background: $white;
   color: $primary-black;
   box-shadow: $shadow-sm;
-  
+  border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+
   .nav-link {
     color: $primary-black;
-    
+
     &::after {
       background: $primary-black;
     }
   }
-  
-  .mobile-menu-toggle span {
-    background: $primary-black;
+
+  .hamburger-wrapper svg {
+    stroke: $primary-black;
   }
 }

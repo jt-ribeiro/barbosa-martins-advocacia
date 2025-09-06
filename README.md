@@ -12,7 +12,7 @@ Website profissional do escritório de advocacia Barbosa Martins.
 
 ## 📦 Instalação e Execução
 
-```bash
+
 # Clone o repositório
 git clone https://github.com/jt-ribeiro/barbosa-martins-advocacia.git
 
@@ -25,7 +25,7 @@ npm install
 # Execute o projeto
 npm start
 
-##🎨 Design
+## 🎨 Design
 Design minimalista e profissional
 
 Paleta monocromática (preto, branco, cinzas)
@@ -36,7 +36,7 @@ Totalmente responsivo
 
 Animações suaves e profissionais
 
-#📋 Funcionalidades
+##📋 Funcionalidades
 ✅ Página inicial com hero section
 
 ✅ Página "Sobre Nós"

@@ -1,6 +1,393 @@
 @import '../../styles/base/variables';
 
-.about {
-  padding: 6rem 0 3rem;
-  min-height: 80vh;
+// Container centralizado
+.container-elegant {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+
+  @media (min-width: $breakpoint-lg) {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  @media (min-width: $breakpoint-xl) {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+}
+
+// Página
+.about-page {
+  padding-top: 0; // remove barra branca no topo
+}
+
+// Hero Section
+.about-hero {
+  background: linear-gradient(135deg, $primary-black 0%, $primary-dark 100%);
+  color: $white;
+  padding: 5rem 0 4rem;
+  text-align: center;
+
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+    @media (min-width: $breakpoint-md) {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      animation: slideInFromLeft 1s ease-out;
+    }
+
+    .hero-description {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto;
+      animation: fadeIn 1.2s ease-out;
+    }
+  }
+}
+
+// Timeline Section
+.timeline-section {
+  background: $white;
+  padding: 6rem 0;
+
+  .section-header,
+  .timeline {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+    @media (min-width: $breakpoint-md) {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    text-align: center;
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: $primary-black;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: $gray-medium;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  }
+
+  .timeline {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .timeline-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 4rem;
+    position: relative;
+    opacity: 0;
+    animation: fadeInUp 1s forwards;
+
+    &:nth-child(odd) { animation-delay: 0.2s; }
+    &:nth-child(even) { animation-delay: 0.4s; }
+
+    @media (max-width: $breakpoint-md) {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 2.5rem;
+    }
+  }
+
+  .timeline-year {
+    flex: 1;
+    text-align: right;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: $primary-dark;
+    margin-right: 2rem;
+    opacity: 0;
+    animation: slideInLeft 0.8s forwards;
+
+    @media (max-width: $breakpoint-md) {
+      text-align: left;
+      margin-right: 0;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+  }
+
+  .timeline-content {
+    flex: 2;
+    display: flex;
+    align-items: flex-start;
+    opacity: 0;
+    animation: slideInRight 0.8s forwards;
+
+    .timeline-dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: $primary-dark;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 1.5rem;
+      color: $white;
+      flex-shrink: 0;
+    }
+
+    .timeline-event {
+      background: $gray-lighter;
+      padding: 1.5rem;
+      border-radius: 15px;
+      border-left: 4px solid $primary-dark;
+
+      h3 {
+        margin-bottom: 0.5rem;
+        font-size: 1.3rem;
+        color: $primary-black;
+      }
+
+      p {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: $gray-dark;
+      }
+    }
+
+    @media (max-width: $breakpoint-md) {
+      flex-direction: row;
+      align-items: center;
+
+      .timeline-dot {
+        margin-right: 1rem;
+      }
+    }
+  }
+}
+
+// Values Section
+.values-section {
+  background: $gray-lighter;
+  padding: 6rem 0;
+
+  .section-header,
+  .values-grid {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+    @media (min-width: $breakpoint-md) {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+  }
+
+  .value-card {
+    background: $white;
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border: 1px solid rgba($gray-light, 0.3);
+
+    &:hover {
+      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+      transform: translateY(-5px);
+    }
+
+    .value-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: $primary-black;
+      font-weight: 600;
+    }
+
+    p {
+      color: $gray-medium;
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+  }
+}
+
+// Mission Section
+.mission-section {
+  background: $gray-lighter;
+  padding: 6rem 0;
+
+  .mission-grid {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+    @media (min-width: $breakpoint-md) {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 900px;
+    margin: 0 auto;
+
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  .mission-card, .vision-card {
+    background: $white;
+    padding: 3rem 2.5rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border: 1px solid rgba($gray-light,0.3);
+
+    .mission-icon, .vision-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: $primary-black;
+      font-weight: 600;
+    }
+
+    p {
+      color: $gray-medium;
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
+  }
+}
+
+// CTA Section
+.about-cta {
+  padding: 5rem 0;
+
+  .cta-content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+    @media (min-width: $breakpoint-md) {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 2.5rem;
+    }
+  }
+}
+
+// Buttons
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem 2.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  font-size: 1.1rem;
+  cursor: pointer;
+
+  &-primary {
+    background: $white;
+    color: $primary-black;
+
+    &:hover {
+      background: transparent;
+      color: $white;
+      border-color: $white;
+      transform: translateY(-2px);
+    }
+  }
+
+  &-large {
+    padding: 1.5rem 3rem;
+    font-size: 1.2rem;
+  }
+}
+
+// Animações
+@keyframes fadeIn { 0% { opacity: 0; transform: translateY(10px); } 100% { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInUp { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
+@keyframes slideInLeft { 0% { opacity: 0; transform: translateX(-50px); } 100% { opacity: 1; transform: translateX(0); } }
+@keyframes slideInRight { 0% { opacity: 0; transform: translateX(50px); } 100% { opacity: 1; transform: translateX(0); } }
+
+// Responsive Adjustments
+@media (max-width: $breakpoint-md) {
+  .about-hero { padding: 4rem 0 3rem; }
+  .timeline-section, .values-section, .mission-section { padding: 4rem 0; }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .values-grid, .mission-grid { grid-template-columns: 1fr !important; }
+  .about-cta { padding: 3rem 0; }
 }
